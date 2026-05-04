@@ -3,8 +3,8 @@ services:
   - type: web
     name: url-spam-detector
     runtime: python
-    buildCommand: pip install -r requirements.txt && bash setup.sh
-    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    buildCommand: "pip install -r requirements.txt && python -m nltk.downloader stopwords wordnet"
+    startCommand: "streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true"
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.0"
